@@ -6,14 +6,14 @@ import hashlib
 
 def func(s):
     h_str = hashlib.sha1(s.encode('utf-8')).hexdigest()
-    sum_ = 0
+    sum_ = set()
     for i in range(len(s)):
         for j in range(i + 1, len(s) + 1):
             hash_subs = hashlib.sha1(s[i : j].encode('utf-8')).hexdigest()
             if  hash_subs != h_str:
-                sum_ += 1
+                sum_.add(hash_subs)
 
-    return sum_
+    return len(sum_)
 
 
 print(func('lamp'))
